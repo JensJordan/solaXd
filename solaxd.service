@@ -1,0 +1,12 @@
+[Unit]
+Description=SolaXd, the daemon for communication with SolaX-X1_Mini inverter via RS485
+After=network-online.target
+
+[Service]
+Restart=always
+RestartSec=60
+EnvironmentFile=-/etc/default/solaxd
+ExecStart=/usr/bin/solaxd $SOLAXD_OPTS
+
+[Install]
+WantedBy=multi-user.target
