@@ -3,6 +3,8 @@ solaXd
 
 Daemon for communication with SolaX-X1 Mini inverter via RS485.
 
+## Environment
+
     ┌─────────┐              ┌─────────┐              ┌─────────┐
     │ SolaX   │     RS485    │ USB to  │      USB     │   RPi   │
     │ X1-Mini │<------------>│ RS485   │<------------>│   or    │
@@ -14,7 +16,7 @@ Recommendations for RS485 wiring:
 * Optional: Bias resistors with 2x 1K
 
 
-# Features
+## Features
 
 * SolaX-X1 Mini Live-Data
 * RS485 / TTY back-end
@@ -150,7 +152,7 @@ Therefore, you do this:
   It contains a line like this: ``ATTRS{serial}=="A123ABCD"   <-- device serial number``
 * Create a new udev rule:
   ```
-  echo 'ACTION=="add", SUBSYSTEM=="tty", ATTRS{serial}=="device serial number", SYMLINK+="ttySOLAX", OWNER="dialout"' > /lib/udev/rules.d/70-solaxd.rules
+  echo 'ACTION=="add", SUBSYSTEM=="tty", ATTRS{serial}=="device serial number", SYMLINK+="ttySOLAX", OWNER="dialout"' | sudo tee /lib/udev/rules.d/70-solaxd.rules
   ```
   Of course you need to replace the ``device serial number`` with whatever ``udevadm`` displayed.
   This rule creates a symlink ``/dev/ttySOLAXD`` which points to identified USB device. 
