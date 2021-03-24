@@ -11,7 +11,12 @@ install -m 644 solaxd.conf      /etc/default/solaxd
 install -m 644 solaxd.logrotate /etc/logrotate.d/solaxd
 install -m 644 uninstall.sh     /usr/bin/uninstall-solaxd.sh
 
-systemctl enable solaxd.service
-systemctl start  solaxd.service
+# start the daemon/service
+#systemctl enable solaxd.service
+#systemctl start  solaxd.service
 
-echo "##### edit /etc/default/solaxd to configure options ####"
+echo "# Edit /etc/default/solaxd to configure options."
+echo
+echo "# Enable and start the daemon/service on systemd based systems (e.g. Debian 8, Ubuntu 15.x, Raspbian Jessie and newer):"
+echo "sudo systemctl enable solaxd.service"
+echo "sudo systemctl start solaxd.service"
