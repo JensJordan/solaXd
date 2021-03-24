@@ -11,7 +11,7 @@ Daemon for communication with SolaX-X1 Mini inverter via RS485.
 Recommendations for RS485 wiring:
 * Twisted pair
 * Termination with 120 Ohm
-* Optional: Bias resistors with 1K
+* Optional: Bias resistors with 2x 1K
 
 
 # Features
@@ -30,12 +30,11 @@ Recommendations for RS485 wiring:
 
 
 ## Known bugs
-cd 
-* The HTTP front-end is working fine with  HTTP-Binding of openHAB 3, but not correct with Chrome or Edge browser.
+
+* The HTTP front-end is working fine with HTTP-Binding of openHAB 3, but not correct with Chrome or Edge browser.
 
 
 ## Build & Installation
-
 
 To build the solaXd Building requires the following packages and/or features: ``git, gcc``
 
@@ -96,7 +95,7 @@ Because sometime we need it.
 The solaXd was designed to transfer Live-Data from SolaX-X1 Mini inverter into openHAB. Therefor the HTTP-Binding will be used.
 Ensure the following openHAB addons are installed: ``HTTP binding, JSON-Path translation``
 
-Here you will find an example configuration for a HTTP-Binding thing:
+Here you will find an example configuration for a HTTP thing:
 
     Thing http:url:solaxd "SolaX-Daemon" @ "HTTP" [ baseURL="http://127.0.0.1:6789", refresh=10 ]   //, contentType="application/json"]
     {
@@ -139,7 +138,7 @@ And here an example for the corresponding items:
 
 ## Adding a USB interface by symlink
 
-If you attach a USB to RS485 converter to your RasberryPi or computer, it'll show up as ``/dev/ttyUSB0``.
+If you attach a USB to RS485 converter to your RasberryPi or computer, it will show up as ``/dev/ttyUSB0``.
 This is a problem, if you ever add another serial interface that uses the same driver, solaXd will use maybe the wrong device.
 
 Therefore, you do this:
